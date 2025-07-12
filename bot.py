@@ -198,5 +198,14 @@ def send_to_service(chat_id, service_name, service_info, phone):
     except Exception:
         failure_count[service_name] += 1
 
+
+app = Flask(_name_)
+PORT = int(os.environ.get("PORT", 5000))
+
+# Fake endpoint
+@app.route('/')
+def home():
+    return 'Bot is alive'
+
 if __name__ == '__main__':
     bot.polling()
