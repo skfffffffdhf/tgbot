@@ -62,7 +62,14 @@ SERVICES = {
         "method": "POST",
         "data": {"phone": "%NUMBER%", "type": "call"},
         "delay": 2.5
-    }
+    },
+    "mycar": {
+        "url": "https://sso.mycar.kz/auth/login/",
+        "phone_f": 0,
+        "method": "POST",
+        "data": {"phone_number": "%NUMBER%"},
+        "delay": 3
+}
 }
 
 # Счетчики успешных и неуспешных запросов
