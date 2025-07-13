@@ -54,7 +54,7 @@ SERVICES = {
         "phone_f": 2,
         "method": "POST",
         "data": {"phone": "%NUMBER%", "type": "sms"},
-        "delay": 2.5
+        "delay": 3
     },
     "naimi_call": {
         "url": "https://naimi.kz/api/app/pub/login/code",
@@ -68,7 +68,7 @@ SERVICES = {
         "phone_f": 0,
         "method": "POST",
         "data": {"phone_number": "%NUMBER%"},
-        "delay": 3
+        "delay": 60
 }
 }
 
@@ -98,6 +98,8 @@ def send_sms_to_ayanmarket(phone):
             failure_count["ayanmarket"] += 1
     except Exception:
         failure_count["ayanmarket"] += 1
+
+    time.sleep(30)
 
 # Команда /start
 @bot.message_handler(commands=['start'])
@@ -207,6 +209,7 @@ def send_to_service(chat_id, service_name, service_info, phone):
             failure_count[service_name] += 1
     except Exception:
         failure_count[service_name] += 1
+    time.sleep(service_info["delay"])
 
 if __name__ == '__main__':
     bot.polling()
